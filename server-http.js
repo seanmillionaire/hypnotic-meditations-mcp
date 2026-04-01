@@ -27,7 +27,7 @@ function recommend(goal) {
   return scored[0].score > 0 ? scored[0].p : PRODUCTS.find(p => p.id === "bundle-library");
 }
 
-app.post("/mcp", async (req, res) => {
+app.post("/", async (req, res) => {
   const server = new McpServer({ name: "hypnotic-meditations", version: "1.0.0" });
 
   server.tool("get_recommendation", { goal: z.string() }, async ({ goal }) => {
