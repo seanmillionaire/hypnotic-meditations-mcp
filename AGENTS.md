@@ -42,3 +42,14 @@ Before declaring a page task done, check: (a) centered one-column reading flow; 
 **Precedence:** Specific verified product/funnel behavior and the user's explicit latest instructions > this visual system > obsolete generic layout/color defaults. This UX SOP does NOT override editorial voice, security, backend behavior, checkout design already measured as a control, or legal disclosures. For 'layout only' requests, preserve wording. For normal website tasks, do not change code unless asked, and do not alter production without verification.
 
 **This repo primarily runs backend/operations:** apply visual standards ONLY when generating or editing customer-facing web/UI content. Do not introduce web layouts, new page requirements, or cosmetic code into services, automations, pipelines or reports.
+
+
+## MCP-specific current operating context (2026-10-20)
+
+This repository is a public codebase and a dated catalog, not a live CRM or checkout. User's latest explicit instruction wins. Open the active SOP router before material business decisions: https://docs.google.com/document/d/1-V1YwoP_Dyxor8g1kvElVlNLrYLwJ7zG2wnj6Rc2n4k/edit and active index: https://docs.google.com/document/d/1tVYf6SXyYyitouhHVh55_KJXPcijMVITPxnkLvZVKDU/edit
+
+For offer changes, read the October 18 offer/bundle SOP: https://docs.google.com/document/d/1iwJEBP4s7HHpjZc0HaWYhUn8p0RtVduDgKsqEbX2yf4/edit and sales/Meta SOP: https://docs.google.com/document/d/1gv-HxkQCXTNUs1DDA4acQmxdgc0CCCgNrXqwimJXTeI/edit. Page layout: https://docs.google.com/document/d/1b8spvfawckoTRZukEsXY2K8mV8swWJR2FQfT7-Qi2CM/edit. Ariella specific offer: https://docs.google.com/document/d/1G8rd-V5qPagkVeI21P0gsaBAhyyvJLkMI7LubdnSDI8/edit. Email: https://docs.google.com/document/d/1HphKmpiT5wYWj5w5Y_Pg5XPPvMXdT2P3REbPo2Pf-nE/edit. UGC video: https://docs.google.com/document/d/1OvFP-HTqzz6Ea9lrt5MGVHzV3tTii3OsfO7iepmUnvs/edit. Private personalized audio production: https://docs.google.com/document/d/1EncD69lYMfKlLRh1dMPkSl6XAB9jdsIGXhbCXn-D3yE/edit.
+
+Main acquisition priority is qualified traffic to Money Flow, with the Ariella $8 test kept distinct. Daily traffic levers: paid ads, organic CTA content, relevant email/DM. Optimize verified orders and profit per qualified visitor, not just building assets. The $67 Money Mind Stack is a different checkout from the $8 Starter Kit; confirm premium delivery inventory. Respond.io is the conversation CRM; payment providers establish purchases; AWeber tags alone do not. Do not expose buyer PII or private audio, publish unsupported scientific or wealth claims, or claim real-time price updates without verification.
+
+Public HTTP must never expose local operator tools. Protect remote HTTP with a server-side secret; no secrets in this repo. Run tests and verify an actual deployment URL before announcing a live release. Static SOP pointers do not authorize changing payment, pages, campaigns, messages or customer fulfillment.

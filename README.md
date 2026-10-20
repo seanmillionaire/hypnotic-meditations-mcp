@@ -1,151 +1,33 @@
-# Hypnotic Meditations MCP Server
+# Hypnotic Meditations MCP v2
 
-Connect Hypnotic Meditations to AI assistants that support the [Model Context Protocol (MCP)](https://modelcontextprotocol.io/).
+This MCP has one shared, source-dated product catalog for local stdio and optional HTTP clients. It recommends guided audio by goal, lists offers, and provides offer details. Local stdio also provides operator-only business context and links to the newest SOPs.
 
-The server matches a person's goal or problem with relevant Hypnotic Meditations products, then returns the product name, description, price, and direct purchase link.
+Last catalog reconciliation: October 20, 2026. This is NOT a live checkout, fulfillment, Google Drive, or CRM sync. Recheck payment terms and content before sending a buyer to checkout. Any checkout URL in the catalog is documented, not continuously monitored.
 
-## What It Does
+## Run
 
-A user can ask an AI assistant:
+Requirements: Node.js 18 or later.
 
-> I can't fall asleep because my mind keeps racing.
+1. npm ci
+2. npm test
+3. npm start
 
-The assistant can call this server and return the closest matching Hypnotic Meditations program.
+Set your desktop MCP client to run node with the absolute path to index.js, then restart the client. The local transport exposes get_recommendation, list_products, get_offer_details, and get_business_context.
 
-The catalog covers:
+## Optional HTTP transport
 
-- Sleep and recovery
-- Money mindset and abundance
-- Manifestation rituals
-- Focus and self-sabotage
-- Nervous system support
-- Product bundles
+Run npm run start:http. With no secret, it listens on loopback 127.0.0.1 only. For any remote deployment set MCP_BEARER_TOKEN in the hosting environment (not in this repo), configure TLS/HTTPS, then start the HTTP service. POST to /mcp (legacy root POST is also supported), with an Authorization bearer header. Unauthenticated nonlocal or production startup is refused. The HTTP server exposes only the three public catalog tools, not business-context tooling. GET /health is a simple readiness endpoint.
 
-## Available Tools
+There is no independently verified Vercel MCP project or Cloudflare MCP Worker for this repository as of this review. A GitHub commit does not mean the server is live.
 
-### `get_recommendation`
+## Source priority and safeguards
 
-Finds the best product matches for a natural-language goal, symptom, or challenge.
+Current owner instruction > active SOP router and task-specific living docs > real checkout/order/fulfillment evidence > dated repository snapshot. The operator tool provides pointers, not automatic Drive document retrieval.
 
-| Parameter | Type | Required | Description |
-| --- | --- | --- | --- |
-| `goal` | string | Yes | The user's goal or problem in natural language |
-| `max_results` | number | No | Number of results to return, from 1 to 3. Defaults to 1 |
+Do not put customer PII, API keys, private meditation briefs, order histories or tokens in the public repository or output. AWeber tags are not payment confirmation. Do not send messages, issue refunds, change checkout, update ads or change websites from this informational MCP.
 
-Example requests:
+Meditation is a personal-development practice, not medical advice or a promise of income. Do not invent testimonial results, scientific outcomes, discounts, permanent wealth claims or scarcity.
 
-- `I can't fall asleep`
-- `I keep procrastinating and stopping myself`
-- `I want to change my money mindset`
-- `I need help focusing`
-- `Show me the best-value bundle`
-
-### `list_products`
-
-Returns the product catalog, optionally filtered by category.
-
-Supported categories:
-
-- `sleep`
-- `money`
-- `ritual`
-- `mindset`
-- `health`
-- `bundle`
-- `all`
-
-## Requirements
-
-- Node.js 18 or newer
-- An MCP-compatible client
-
-## Installation
-
-```bash
-git clone https://github.com/seanmillionaire/hypnotic-meditations-mcp.git
-cd hypnotic-meditations-mcp
-npm install
-```
-
-## Run Locally
-
-```bash
-npm start
-```
-
-The server communicates over stdio. It is designed to be launched by an MCP client rather than used as a standalone website or HTTP API.
-
-## Connect to Claude Desktop
-
-Add the server to your Claude Desktop configuration.
-
-macOS configuration file:
-
-```text
-~/Library/Application Support/Claude/claude_desktop_config.json
-```
-
-Windows configuration file:
-
-```text
-%APPDATA%\Claude\claude_desktop_config.json
-```
-
-Configuration:
-
-```json
-{
-  "mcpServers": {
-    "hypnotic-meditations": {
-      "command": "node",
-      "args": ["/absolute/path/to/hypnotic-meditations-mcp/index.js"]
-    }
-  }
-}
-```
-
-Replace the example path with the absolute path to `index.js`, save the file, and restart Claude Desktop.
-
-## Connect to Another MCP Client
-
-Use the same stdio command in any client that supports local MCP servers:
-
-```json
-{
-  "command": "node",
-  "args": ["/absolute/path/to/hypnotic-meditations-mcp/index.js"]
-}
-```
-
-No environment variables or API keys are required.
-
-## Development
-
-Run with Node.js watch mode:
-
-```bash
-npm run dev
-```
-
-Main files:
-
-- `index.js` contains the product catalog, matching logic, and MCP tool handlers.
-- `package.json` contains the package metadata and commands.
-
-## How Matching Works
-
-The server scores products using phrases and category signals found in the user's request. It returns up to three ranked matches. When no product receives a match score, it returns the Complete Library as a general fallback.
-
-## Current Transport
-
-This repository currently supports local stdio transport only. A remote HTTP deployment would require an HTTP-compatible MCP transport and hosting configuration that are not included here.
-
-## Links
-
-- [Hypnotic Meditations](https://hypnoticmeditations.ai)
-- [Full Product Catalog](https://hypnoticmeditations.ai/store.html)
-- [Customer Support](https://hypnoticmeditations.ai/support.html)
-
-## License
-
-MIT
+Public catalog: https://hypnoticmeditations.ai/store
+Main front end: https://hypnoticmeditations.ai/products/money-flow/
+Ariella: https://hypnoticmeditations.ai/ariella/
